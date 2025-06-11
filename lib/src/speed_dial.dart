@@ -121,6 +121,9 @@ class SpeedDial extends StatefulWidget {
   /// If true tapping on speed dial's children will not close the dial anymore.
   final bool closeManually;
 
+  /// If true, scrolling on the overlay will dismiss the children.
+  final bool closeOnScroll;
+
   /// If true overlay is rendered.
   final bool renderOverlay;
 
@@ -208,6 +211,7 @@ class SpeedDial extends StatefulWidget {
     this.onClose,
     this.direction = SpeedDialDirection.up,
     this.closeManually = false,
+    this.closeOnScroll = false,
     this.renderOverlay = true,
     this.shape = const StadiumBorder(),
     this.curve = Curves.fastOutSlowIn,
@@ -345,6 +349,7 @@ class _SpeedDialState extends State<SpeedDial>
               dialKey: dialKey,
               layerLink: _layerLink,
               closeManually: widget.closeManually,
+              closeOnScroll: widget.closeOnScroll,
               tooltip: widget.tooltip,
               shape: widget.shape,
               onTap: _toggleChildren,
