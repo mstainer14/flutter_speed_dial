@@ -136,6 +136,9 @@ class SpeedDial extends StatefulWidget {
   /// The padding of each child
   final EdgeInsets childPadding;
 
+  /// The padding of the label of each child.
+  final EdgeInsets childLabelPadding;
+
   /// Add a space at between speed dial and children
   final double? spacing;
 
@@ -215,6 +218,7 @@ class SpeedDial extends StatefulWidget {
     this.closeDialOnPop = true,
     this.childMargin = const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
     this.childPadding = const EdgeInsets.symmetric(vertical: 5),
+    this.childLabelPadding = const EdgeInsets.symmetric(vertical: 8),
     this.spaceBetweenChildren,
     this.spacing,
     this.animationCurve,
@@ -573,6 +577,7 @@ class _ChildrensOverlay extends StatelessWidget {
                 : null,
             childMargin: widget.childMargin,
             childPadding: widget.childPadding,
+            childLabelPadding: widget.childLabelPadding,
             child: child.child,
           );
         })
