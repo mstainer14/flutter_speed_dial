@@ -121,6 +121,9 @@ class SpeedDial extends StatefulWidget {
   /// If true tapping on speed dial's children will not close the dial anymore.
   final bool closeManually;
 
+  /// If true, scrolling on the overlay will dismiss the children.
+  final bool closeOnScroll;
+
   /// If true overlay is rendered.
   final bool renderOverlay;
 
@@ -135,6 +138,9 @@ class SpeedDial extends StatefulWidget {
 
   /// The padding of each child
   final EdgeInsets childPadding;
+
+  /// The padding of the label of each child.
+  final EdgeInsets childLabelPadding;
 
   /// Add a space at between speed dial and children
   final double? spacing;
@@ -205,6 +211,7 @@ class SpeedDial extends StatefulWidget {
     this.onClose,
     this.direction = SpeedDialDirection.up,
     this.closeManually = false,
+    this.closeOnScroll = false,
     this.renderOverlay = true,
     this.shape = const StadiumBorder(),
     this.curve = Curves.fastOutSlowIn,
@@ -215,6 +222,7 @@ class SpeedDial extends StatefulWidget {
     this.closeDialOnPop = true,
     this.childMargin = const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
     this.childPadding = const EdgeInsets.symmetric(vertical: 5),
+    this.childLabelPadding = const EdgeInsets.symmetric(vertical: 8),
     this.spaceBetweenChildren,
     this.spacing,
     this.animationCurve,
@@ -341,6 +349,7 @@ class _SpeedDialState extends State<SpeedDial>
               dialKey: dialKey,
               layerLink: _layerLink,
               closeManually: widget.closeManually,
+              closeOnScroll: widget.closeOnScroll,
               tooltip: widget.tooltip,
               shape: widget.shape,
               onTap: _toggleChildren,
@@ -573,6 +582,7 @@ class _ChildrensOverlay extends StatelessWidget {
                 : null,
             childMargin: widget.childMargin,
             childPadding: widget.childPadding,
+            childLabelPadding: widget.childLabelPadding,
             child: child.child,
           );
         })

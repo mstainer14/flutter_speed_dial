@@ -27,6 +27,7 @@ class AnimatedChild extends AnimatedWidget {
 
   final EdgeInsets childMargin;
   final EdgeInsets childPadding;
+  final EdgeInsets childLabelPadding;
 
   const AnimatedChild({
     Key? key,
@@ -54,6 +55,7 @@ class AnimatedChild extends AnimatedWidget {
     this.heroTag,
     required this.childMargin,
     required this.childPadding,
+    required this.childLabelPadding,
   }) : super(key: key, listenable: animation);
 
   @override
@@ -141,9 +143,7 @@ class AnimatedChild extends AnimatedWidget {
         ScaleTransition(
           scale: animation,
           child: Container(
-            padding: (child == null)
-                ? const EdgeInsets.symmetric(vertical: 8)
-                : null,
+            padding: (child == null) ? childLabelPadding : null,
             key: (child == null) ? btnKey : null,
             child: buildLabel(),
           ),
